@@ -29,8 +29,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('soft_skills', SoftSkillController::class);
     Route::resource('technical_skills', TechnicalSkillController::class);
     Route::resource('experiences', ExperienceController::class);
-    Route::get('profile', [AdminController::class, 'showProfile'])->name('profile');
-    Route::put('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/profile', [AdminController::class, 'showProfile'])->name('profile');
+    Route::put('/profile', [AdminController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/profile/image', [AdminController::class, 'updateProfileImage'])->name('profile.update.image');
 
 });
 

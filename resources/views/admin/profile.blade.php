@@ -10,27 +10,32 @@
         <div class="alert alert-danger">{{ session('error') }}</div>
     @endif
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Profile Picture</h6>
                 </div>
                 <div class="card-body">
-                    <div class="text-center">
-                        <img class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;" src="{{ $user->profile_image ? asset('storage/'.$user->profile_image) : asset('images/default-profile.jpg') }}" alt="Profile Picture">
+                    <div class="text-center mb-3">
+                        @if($user->profile_image)
+                            <img class="img-profile rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" src="{{ asset('storage/'.$user->profile_image) }}" alt="Profile Picture">
+                        @else
+                            <div class="img-profile rounded-circle bg-primary text-white d-flex align-items-center justify-content-center" style="width: 150px; height: 150px; font-size: 50px;">
+                                {{ strtoupper(substr($user->name, 0, 1)) }}
+                            </div>
+                        @endif
                     </div>
-                    <form action="{{ route('admin.profile.update-image') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.profile.update.image') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
                         <div class="form-group">
-                            <input type="file" class="form-control-file" id="profile_image" name="profile_image">
+                            <input type="file" class="form-control-file" id="profile_image" name="profile_image" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Update Picture</button>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Profile Details</h6>

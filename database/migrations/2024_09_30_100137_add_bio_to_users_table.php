@@ -10,6 +10,8 @@ class AddBioToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('bio')->nullable()->after('email');
+            $table->string('profile_image')->nullable();
+
         });
     }
 
@@ -17,6 +19,7 @@ class AddBioToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('bio');
+            $table->dropColumn('profile_image');
         });
     }
 }
