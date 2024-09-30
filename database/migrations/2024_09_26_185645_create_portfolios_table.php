@@ -10,9 +10,9 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->json('stack');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('stack')->nullable;
             $table->string('image_path')->nullable();
             $table->string('project_url')->nullable();
             $table->date('completion_date')->nullable();

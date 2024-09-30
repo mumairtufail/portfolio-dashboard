@@ -11,12 +11,12 @@ class PortfolioController extends Controller
     public function index()
     {
         $portfolios = Portfolio::all();
-        return view('UserSide.portfolios.index', compact('portfolios'));
+        return view('admin.portfolios.index', compact('portfolios'));
     }
 
     public function create()
     {
-        return view('UserSide.portfolios.create');
+        return view('admin.portfolios.create');
     }
 
     public function store(Request $request)
@@ -24,7 +24,7 @@ class PortfolioController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
-            'stack' => 'required|array',
+            'stack' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'project_url' => 'nullable|url',
             'completion_date' => 'nullable|date',
@@ -35,21 +35,14 @@ class PortfolioController extends Controller
             $validatedData['image_path'] = $imagePath;
         }
 
-        $validatedData['stack'] = json_encode($validatedData['stack']);
-
         Portfolio::create($validatedData);
 
-        return redirect()->route('portfolios.index')->with('success', 'Portfolio created successfully.');
-    }
-
-    public function show(Portfolio $portfolio)
-    {
-        return view('UserSide.portfolios.show', compact('portfolio'));
+        return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio created successfully.');
     }
 
     public function edit(Portfolio $portfolio)
     {
-        return view('UserSide.portfolios.edit', compact('portfolio'));
+        return view('admin.portfolios.edit', compact('portfolio'));
     }
 
     public function update(Request $request, Portfolio $portfolio)
@@ -57,7 +50,7 @@ class PortfolioController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
-            'stack' => 'required|array',
+            'stack' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'project_url' => 'nullable|url',
             'completion_date' => 'nullable|date',
@@ -71,11 +64,9 @@ class PortfolioController extends Controller
             $validatedData['image_path'] = $imagePath;
         }
 
-        $validatedData['stack'] = json_encode($validatedData['stack']);
-
         $portfolio->update($validatedData);
 
-        return redirect()->route('portfolios.index')->with('success', 'Portfolio updated successfully.');
+        return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio updated successfully.');
     }
 
     public function destroy(Portfolio $portfolio)
@@ -85,6 +76,6 @@ class PortfolioController extends Controller
         }
         $portfolio->delete();
 
-        return redirect()->route('portfolios.index')->with('success', 'Portfolio deleted successfully.');
+        return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio deleted successfully.');
     }
 }
