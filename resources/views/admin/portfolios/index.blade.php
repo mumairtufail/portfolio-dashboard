@@ -2,10 +2,6 @@
 @extends('admin.partials.app')
 @section('title', 'Dashboard')
 @section('content')  
-<!-- Tagify CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.9.3/tagify.css">
-<!-- Tagify JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tagify/4.9.3/tagify.min.js"></script>
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800">Portfolios</h1>
     <div class="card shadow mb-4">
@@ -29,9 +25,7 @@
                         @foreach($portfolios as $portfolio)
                         <tr>
                             <td>{{ $portfolio->title }}</td>
-                            <td>
-                                <input name="stack" class="form-control tagify-input" value="{{ $portfolio->stack }}">
-                            </td>
+                            <td>{{ $portfolio->stack }}</td>
                             <td>{{ $portfolio->project_url }}</td>
                             <td>{{ $portfolio->completion_date }}</td>
                             <td>
@@ -50,15 +44,4 @@
         </div>
     </div>
 </div>
-
-<!-- Tagify Initialization -->
-<!-- Tagify Initialization -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var inputElements = document.querySelectorAll('.tagify-input');
-        inputElements.forEach(function(input) {
-            new Tagify(input);
-        });
-    });
-</script>
 @endsection

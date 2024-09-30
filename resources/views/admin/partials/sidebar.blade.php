@@ -11,7 +11,7 @@
                     <a class="js-arrow" href="#">
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
+                        <!-- <li>
                             <a href="index.html">Dashboard 1</a>
                         </li>
                         <li>
@@ -22,10 +22,15 @@
                         </li>
                         <li>
                             <a href="index4.html">Dashboard 4</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
-                <!-- Add the Portfolio module here -->
+                <!-- Profile module -->
+                <li>
+                    <a href="{{ route('admin.profile') }}">
+                        <i class="fas fa-user"></i>Profile</a>
+                </li>
+                <!-- Portfolio module -->
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
                         <i class="fas fa-briefcase"></i>Portfolio</a>
@@ -38,10 +43,65 @@
                         </li>
                     </ul>
                 </li>
-                <!-- Existing menu items -->
+                <!-- Education module -->
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-graduation-cap"></i>Education</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="{{ route('admin.education.index') }}">My Education</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.education.create') }}">Add New Education</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Soft Skills module -->
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-lightbulb"></i>Soft Skills</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="{{ route('admin.soft_skills.index') }}">All Soft Skills</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.soft_skills.create') }}">Add New Soft Skill</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Technical Skills module -->
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-cogs"></i>Technical Skills</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="{{ route('admin.technical_skills.index') }}">All Technical Skills</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.technical_skills.create') }}">Add New Technical Skill</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Experience module -->
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-briefcase"></i>Experience</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="{{ route('admin.experiences.index') }}">All Experiences</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.experiences.create') }}">Add New Experience</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Logout button -->
                 <li>
-                    <a href="chart.html">
-                        <i class="fas fa-chart-bar"></i>Charts</a>
+                    <a href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i>Logout</a>
+                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
                 <!-- ... other menu items ... -->
             </ul>
