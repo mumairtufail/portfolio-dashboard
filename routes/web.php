@@ -10,8 +10,7 @@ use App\Http\Controllers\Admin\SoftSkillController;
 use App\Http\Controllers\Admin\TechnicalSkillController;
 use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\AdminController;
-
-
+use App\Http\Controllers\UserController;
 // Admin registration and login routes
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -33,5 +32,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::put('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
 
 });
+
+
+// user routes
+Route::get('/', [UserController::class, 'index'])->name('home');
 
 
