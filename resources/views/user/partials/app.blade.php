@@ -21,7 +21,7 @@
 
     @include('user.partials.resume')
 
-    @include('user.partials.pricing')
+    <!-- @include('user.partials.pricing') -->
 
     @include('user.partials.brand')
 
@@ -29,7 +29,7 @@
 
     @include('user.partials.available')
 
-    @include('user.partials.blog')
+    {{-- @include('user.partials.blog') --}}
 
     @include('user.partials.contact')
 

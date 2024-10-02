@@ -1,6 +1,6 @@
     <!-- Start Pricing 
     ============================================= -->
-    <div id="pricing" class="pricing-area default-padding-top">
+    <!-- <div id="pricing" class="pricing-area default-padding-top">
         <div class="container">
             <div class="pricing-box">
                 <div class="row">
@@ -54,5 +54,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- End Pricing Area -->

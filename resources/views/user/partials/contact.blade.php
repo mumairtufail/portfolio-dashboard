@@ -67,9 +67,9 @@
                                     <div class="info">
                                         <p>Our Email</p>
                                         <h5>
-                                            <a href="mailto:info@validtheme.com">info@validtheme.com</a> 
-                                            <br> 
-                                            <a href="mailto:support@softar.com">support@softar.com</a>
+                                            <a href="mailto:info@validtheme.com"> {{ $user->email }}</a> 
+                                            <!-- <br> 
+                                            <a href="mailto:support@softar.com">support@softar.com</a> -->
                                         </h5>
                                     </div>
                                 </li>
@@ -80,7 +80,7 @@
                                     <div class="info">
                                         <p>Address</p>
                                         <h5>
-                                            22 Baker Street, <br> London, United Kingdom, <br> W1U 3BW
+                                        {{ $user->address }}
                                         </h5>
                                     </div>
                                 </li>
@@ -91,8 +91,8 @@
                                     <div class="info">
                                         <p>Phone</p>
                                         <h5>
-                                            <a href="tel:+4733378901">+44-20-7328-4499</a> 
-                                            <br><a href="tel:+4733378901">+99-34-8878-9989</a>
+                                            <a href="tel:+4733378901">{{ $user-> phone }}</a> 
+                                           
                                         </h5>
                                     </div>
                                 </li>

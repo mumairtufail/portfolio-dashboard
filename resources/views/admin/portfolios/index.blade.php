@@ -1,4 +1,3 @@
-
 @extends('admin.partials.app')
 @section('title', 'Dashboard')
 @section('content')  
@@ -22,22 +21,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($portfolios as $portfolio)
-                        <tr>
-                            <td>{{ $portfolio->title }}</td>
-                            <td>{{ $portfolio->stack }}</td>
-                            <td>{{ $portfolio->project_url }}</td>
-                            <td>{{ $portfolio->completion_date }}</td>
-                            <td>
-                                <a href="{{ route('admin.portfolios.edit', $portfolio->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                <form action="{{ route('admin.portfolios.destroy', $portfolio->id) }}" method="POST" style="display: inline-block;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this portfolio?')">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
+                        @if(isset($portfolios) && $portfolios->count() > 0)
+                            @foreach($portfolios as $portfolio)
+                            <tr>
+                                <td>{{ $portfolio->title }}</td>
+                                <td>{{ $portfolio->stack }}</td>
+                                <td>{{ $portfolio->project_url }}</td>
+                                <td>{{ $portfolio->completion_date }}</td>
+                                <td>
+                                    <a href="{{ route('admin.portfolios.edit', $portfolio->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <form action="{{ route('admin.portfolios.destroy', $portfolio->id) }}" method="POST" style="display: inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this portfolio?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="5" class="text-center">No portfolios found.</td>
+                            </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>

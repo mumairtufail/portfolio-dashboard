@@ -18,7 +18,22 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
+        'first_name',
+        'last_name',
+        'is_admin',
+        'first_title',
+        'second_title',
+        'third_title',
+        'bio',
+        'birthday',
+        'address',
+        'phone',
+        'skype',
+        'freelance_status',
+        'facebook_url',
+        'behance_url',
+        'dribbble_url',
         'email',
         'password',
     ];
@@ -43,16 +58,16 @@ class User extends Authenticatable
     ];
 
     public function educations()
-{
-    return $this->hasMany(Education::class);
-}
+    {
+        return $this->hasMany(Education::class);
+    }
 
-        public function softSkills()
-        {
-            return $this->hasMany(SoftSkill::class);
-        }
+    public function softSkills()
+    {
+        return $this->hasMany(SoftSkill::class);
+    }
 
-        public function technicalSkills()
+    public function technicalSkills()
     {
         return $this->hasMany(TechnicalSkill::class);
     }
@@ -62,4 +77,8 @@ class User extends Authenticatable
         return $this->hasMany(Experience::class);
     }
 
+    public function portfolios()
+    {
+        return $this->hasMany(Portfolio::class);
+    }
 }

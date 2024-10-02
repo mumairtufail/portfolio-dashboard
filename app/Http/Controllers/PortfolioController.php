@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
     public function index()
     {
-        $portfolios = Portfolio::all();
+        $portfolios = Auth::user()->portfolios;
         return view('admin.portfolios.index', compact('portfolios'));
     }
 
@@ -35,6 +36,8 @@ class PortfolioController extends Controller
             $validatedData['image_path'] = $imagePath;
         }
 
+        $validatedData['user_id'] = Auth::id(); // Set the user_id
+        
         Portfolio::create($validatedData);
 
         return redirect()->route('admin.portfolios.index')->with('success', 'Portfolio created successfully.');

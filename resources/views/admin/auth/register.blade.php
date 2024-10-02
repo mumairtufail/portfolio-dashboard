@@ -36,7 +36,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Name</label>
-                        <input class="au-input au-input--full" type="text" name="name" placeholder="Name" value="{{ old('name') }}">
+                        <input class="au-input au-input--full" type="text" name="username" placeholder="Name" value="{{ old('username') }}">
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>

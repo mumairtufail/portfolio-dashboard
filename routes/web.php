@@ -35,6 +35,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
 
 // user routes
-Route::get('/', [UserController::class, 'index'])->name('home');
+Route::get('/{name}', action: [UserController::class, 'index'])->name('home');
+
 
 
