@@ -26,13 +26,54 @@
                         <a class="btn btn-md circle btn-theme effect" href="#resume">My Resume</a>
                     </div>
                 </div>
+                <style>
+    .image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px; /* Adjust this value to change the corner rounding */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    }
 
+    .large-image {
+        width: 100%;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .shape-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .shape-image {
+        max-width: 100%;
+        height: auto;
+        opacity: 0.7; /* Adjust this value to change the overlay intensity */
+    }
+
+    /* Optional: Add a hover effect */
+    .image-container:hover .large-image {
+        transform: scale(1.05);
+    }
+</style>
                 <div class="col-lg-6 thumb" data-wow-delay="900ms">
-                    <img class=" wow fadeInDown" src="{{ asset('assets/img/illustration/1.png') }}" alt="Thumb">
-                    <div class="shape-center">
-                        <img src="{{ asset('assets/img/shape/7.png') }}" alt="Thumb">
-                    </div>
-                </div>
+    @php
+        $user = Auth::user();
+        $profileImage = $user && $user->profile_image ? asset('storage/' . $user->profile_image) : asset('assets/img/illustration/1.png');
+    @endphp
+    
+    <div class="image-container">
+        <img class="wow fadeInDown large-image rounded" src="{{ $profileImage }}" alt="Profile Image">
+        <div class="shape-center">
+            <img src="{{ asset('assets/img/shape/7.png') }}" alt="Shape" class="shape-image">
+        </div>
+    </div>
+</div>
+
+
                 
             </div>
             <div class="personal-social">

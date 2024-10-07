@@ -28,6 +28,7 @@ class User extends Authenticatable
         'bio',
         'birthday',
         'address',
+        'profile_image',
         'phone',
         'skype',
         'freelance_status',

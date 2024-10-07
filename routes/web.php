@@ -30,6 +30,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('experiences', ExperienceController::class);
     Route::get('profile', [AdminController::class, 'showProfile'])->name('profile');
     Route::put('profile', [AdminController::class, 'updateProfile'])->name('profile.update');
+    Route::put('profile/update-image', [AdminController::class, 'updateImage'])->name('profile.update-image');
 
 });
 

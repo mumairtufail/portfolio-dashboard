@@ -7,7 +7,7 @@
 
 <body class="bg-fixed dark-layout" style="background-image: url(assets/img/shape/banner-2.jpg);">
 
-    <!-- @include('user.partials.preloader') -->
+    {{-- @include('user.partials.preloader') --}}
 
     @include('user.partials.header')
 
@@ -21,11 +21,11 @@
 
     @include('user.partials.resume')
 
-    <!-- @include('user.partials.pricing') -->
+    {{-- @include('user.partials.pricing') --}}
 
-    @include('user.partials.brand')
+    {{--@include('user.partials.brand') --}} 
 
-    @include('user.partials.testimonials')
+    {{--@include('user.partials.testimonials')--}}
 
     @include('user.partials.available')
 
